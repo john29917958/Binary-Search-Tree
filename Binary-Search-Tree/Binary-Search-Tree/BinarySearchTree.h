@@ -4,24 +4,34 @@
 
 struct Node
 {
+    int key;
     int value;
+    Node* parent;
     Node* left_child;
     Node* right_child;
 };
 
 class BinarySearchTree
 {
-private:
     Node* _root_node;
+    static Node* choice(Node*, Node*);
     void clear();
+    Node* clone(Node*) const;
+    static Node* create_new_node(int, int);
+    Node* search(int key, Node*) const;
+    void delete_node(Node* node) const;
+    int size(Node*) const;
+protected:
+    BinarySearchTree(Node*);
 public:
     BinarySearchTree();
     ~BinarySearchTree();
-    void add(int);
-    BinarySearchTree* clone();
-    bool contains_key();
+    bool add(int, int);
+    BinarySearchTree* clone() const;
+    bool contains_key(int) const;
     void remove(int);
-    int size();
+    Node* search(int) const;
+    int size() const;
 };
 
 #endif
